@@ -11,7 +11,7 @@ router = APIRouter(
 )
 
 
-@router.post("",response_model=ResearchResponse) # here request yhe request input is NewsroomRequest instead ResearchRequest as we are now working in the streamlit
+@router.post("/",response_model=ResearchResponse) # here request yhe request input is NewsroomRequest instead ResearchRequest as we are now working in the streamlit
 async def generate_research(request: NewsroomRequest) -> ResearchResponse:
 
     try:
