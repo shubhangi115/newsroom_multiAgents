@@ -3,7 +3,6 @@
 An AI-powered newsroom application that automates news generation using multiple AI agents.
 
 ## Live Demo
-
 > https://newsroom-ai-multiagent.streamlit.app
 
 ## Features
