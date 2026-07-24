@@ -3,7 +3,7 @@ from google.genai import errors
 
 # from app.agents.research_agent import research_agent
 from app.orchestrator.newsroom_orchestrator import (newsroom_orchestrator) # we will now use the orchestrator to run the research agent instead of calling it directly
-from app.schemas import ResearchRequest, ResearchResponse
+from app.schemas import ResearchRequest, ResearchResponse,NewsroomRequest
 
 
 router = APIRouter(
@@ -12,8 +12,8 @@ router = APIRouter(
 )
 
 
-@router.post("",response_model=ResearchResponse)
-async def generate_research(request: ResearchRequest) -> ResearchResponse:
+@router.post("",response_model=ResearchResponse) # here request yhe request input is NewsroomRequest instead ResearchRequest as we are now working in the streamlit
+async def generate_research(request: NewsroomRequest) -> ResearchResponse:
 
     try:
 
@@ -22,20 +22,34 @@ async def generate_research(request: ResearchRequest) -> ResearchResponse:
         # )
 
         # we will now use the orchestrator to run the research agent instead of calling it directly
-        result = await newsroom_orchestrator.run(topic=request.topic)
+        result = await newsroom_orchestrator.run(topic=request.topic, target_agent=request.target_agent) 
+        
+
+        # return ResearchResponse(
+        #     research=result["research"],    
+        #     fact_check=result["fact_check"],
+        #     seo=result["seo"],
+        #     script=result["script"],
+        #     image_prompt=result["image_prompt"],
+        #     video_prompt=result["video_prompt"],
+        #     headline=result["headline"],
+        #     social_media=result["social_media"],
+        #     validation=result["validation"],
+        #     final= result["final"]
+
+        # )
 
         return ResearchResponse(
-            research=result["research"],    
-            fact_check=result["fact_check"],
-            seo=result["seo"],
-            script=result["script"],
-            image_prompt=result["image_prompt"],
-            video_prompt=result["video_prompt"],
-            headline=result["headline"],
-            social_media=result["social_media"],
-            validation=result["validation"],
-            final= result["final"]
-
+            research=result.get("research"),
+            fact_check=result.get("fact_check"),
+            seo=result.get("seo"),
+            script=result.get("script"),
+            image_prompt=result.get("image_prompt"),
+            video_prompt=result.get("video_prompt"),
+            headline=result.get("headline"),
+            social_media=result.get("social_media"),
+            validation=result.get("validation"),
+            final=result.get("final")
         )
     
     # for api related errors

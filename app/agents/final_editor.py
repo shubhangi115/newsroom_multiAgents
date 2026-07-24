@@ -9,6 +9,8 @@ class FinalEditorAgent:
         fact_check_report: FactCheckReport,
         seo_report: SEOReport,
         script: ScriptReport,
+        image_prompt: ImagePromptReport,
+        video_prompt: VideoPromptReport,
         headline_report: HeadlineReport,
         social_media_report: SocialMediaReport,
         validation_report: ValidationReport
@@ -26,6 +28,12 @@ class FinalEditorAgent:
 
             "FINAL NEWS ARTICLE DRAFT:\n"
             f"{script.model_dump_json(indent=2)}\n\n"
+
+            "IMAGE PROMPT REPORT:\n"
+            f"{image_prompt.model_dump_json(indent=2)}\n\n"
+
+            "VIDEO PROMPT REPORT:\n"
+            f"{video_prompt.model_dump_json(indent=2)}\n\n"
 
             "HEADLINE REPORT:\n"
             f"{headline_report.model_dump_json(indent=2)}\n\n"

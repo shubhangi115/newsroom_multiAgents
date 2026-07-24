@@ -1,13 +1,25 @@
 from pydantic import BaseModel, Field
 
+# for the frontned so the user can send the topic and which aegnt to run
+class NewsroomRequest(BaseModel):
+    topic: str
+    target_agent: str
+
+# for adding urls in the contnet
+class ResearchSource(BaseModel):
+    title: str
+    url: str
+
+
 # for the structured JSON format to return ,instead of single string 
 class ResearchReport(BaseModel):
     topic_overview: str
     key_facts: list[str]
-    important_people_and_organizations: list[str]
+    important_organizations: list[str]
     relevant_dates_and_statistics: list[str]
     claims_requiring_verification: list[str]
     research_summary: str
+    sources: list[ResearchSource] = Field(default_factory=list)
 
 class FactCheckReport(BaseModel):
     claims_examined: list[str]
@@ -79,6 +91,8 @@ class FinalReport(BaseModel):
     final_headline: str
     final_article: str
     final_seo_package: str
+    final_image_prompt: str
+    final_video_prompt: str
     final_social_media_package: str
     publication_notes: str
     publication_status: str
@@ -92,15 +106,28 @@ class ResearchRequest(BaseModel):
     )
 
 
+# class ResearchResponse(BaseModel):
+#     research: ResearchReport # as we have changed the return type of research agent to object 
+#     fact_check: FactCheckReport
+#     seo: SEOReport
+#     script: ScriptReport
+#     image_prompt: ImagePromptReport
+#     video_prompt: VideoPromptReport
+#     headline: HeadlineReport
+#     social_media: SocialMediaReport
+#     validation: ValidationReport
+#     final: FinalReport  
+
+# as the user can shoose any number of aganet
 class ResearchResponse(BaseModel):
-    research: ResearchReport # as we have changed the return type of research agent to object 
-    fact_check: FactCheckReport
-    seo: SEOReport
-    script: ScriptReport
-    image_prompt: ImagePromptReport
-    video_prompt: VideoPromptReport
-    headline: HeadlineReport
-    social_media: SocialMediaReport
-    validation: ValidationReport
-    final: FinalReport  
+    research: ResearchReport | None = None
+    fact_check: FactCheckReport | None = None
+    seo: SEOReport | None = None
+    script: ScriptReport | None = None
+    image_prompt: ImagePromptReport | None = None
+    video_prompt: VideoPromptReport | None = None
+    headline: HeadlineReport | None = None
+    social_media: SocialMediaReport | None = None
+    validation: ValidationReport | None = None
+    final: FinalReport | None = None
 

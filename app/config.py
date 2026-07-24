@@ -20,6 +20,13 @@ if not GEMINI_MODEL:
         "GEMINI_MODEL is missing."
     )
 
+TAVILY_API_KEY = os.getenv("TAVILY_API_KEY")
+
+if not TAVILY_API_KEY:
+    raise ValueError(
+        "TAVILY_API_KEY is missing from the environment variables."
+    )
+
 LLM_TEMPERATURE = float(
     os.getenv("LLM_TEMPERATURE")
 )
