@@ -7,7 +7,6 @@ from app.schemas import ResearchRequest, ResearchResponse,NewsroomRequest
 
 
 router = APIRouter(
-    # prefix="/research",
     tags=["Research"]
 )
 
