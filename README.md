@@ -27,6 +27,12 @@ An AI-powered newsroom application that automates news generation using multiple
 - Tavily API
 
 ## Run Locally
+### Clone the repository
+
+```bash
+git clone https://github.com/shubhangi115/newsroom_multiagent.git
+cd newsroom_multiagent
+```
 
 ### Install dependencies
 
