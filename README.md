@@ -54,12 +54,7 @@ GEMINI_MODEL=gemini-2.5-flash
 LLM_TEMPERATURE=0.2
 LLM_MAX_OUTPUT_TOKENS=1500
 ```
+## Live Demo
 
-## Deployment
+> https://newsroom-ai-multiagent.streamlit.app
 
-- **Backend:** Render
-- **Frontend:** Streamlit Community Cloud
-
-## Author
-
-**Shubhangi**
