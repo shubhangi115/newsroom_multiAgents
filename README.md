@@ -4,7 +4,7 @@ An AI-powered newsroom application that automates news generation using multiple
 
 ## Live Demo
 
-https://newsroom-ai-multiagent.streamlit.app
+> https://newsroom-ai-multiagent.streamlit.app
 
 ## Features
 
