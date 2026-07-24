@@ -2,6 +2,10 @@
 
 An AI-powered newsroom application that automates news generation using multiple AI agents.
 
+## Live Demo
+
+> https://newsroom-ai-multiagent.streamlit.app
+
 ## Features
 
 - News Research
@@ -54,7 +58,5 @@ GEMINI_MODEL=gemini-2.5-flash
 LLM_TEMPERATURE=0.2
 LLM_MAX_OUTPUT_TOKENS=1500
 ```
-## Live Demo
 
-> https://newsroom-ai-multiagent.streamlit.app
 
