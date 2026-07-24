@@ -20,7 +20,7 @@ from components.validation import display_validation
 from components.final import display_final
 from downloads import create_pdf
 
-API_URL = "http://127.0.0.1:8000/research"
+BASE_URL = "https://newsroom-multiagents.onrender.com/"
 
 st.set_page_config(
     page_title="Newsroom AI",
@@ -546,7 +546,7 @@ elif selected == "Features":
                 ):
 
                     response = requests.post(
-                        API_URL,
+                        BASE_URL,
                         json=request_data,
                         timeout=300
                     )
